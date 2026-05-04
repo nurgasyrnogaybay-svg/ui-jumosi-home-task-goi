@@ -3,38 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Poolside</title>
     <style>
       * {
         box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
+
       body {
         display: flex;
         background-color: #36454f;
+        min-height: 100vh;
       }
+
       .left {
         flex-shrink: 0;
-      }
-      .buttongoi {
-        width: auto;
-        height: auto;
-        padding: 5px;
-      }
-      .buttongoi:hover {
-        color: black;
-        background-color: white;
-      }
-      .right-sides {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 80%;
-        height: 100%;
-        overflow: scroll;
+        width: 20%;
+        min-height: 100vh;
+        gap: 10px;
         padding: 20px;
-        gap: 30px;
+        color: white;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        border-right: 1px solid white;
       }
+
+      .ima {
+        display: none;
+        width: 200px;
+        height: 40px;
+        cursor: pointer;
+      }
+
       .left-media {
         display: none;
         flex-direction: column;
@@ -44,121 +48,451 @@
         padding: 20px;
         color: white;
         position: absolute;
-        top: 100px;
+        top: 50px;
         right: 1px;
+        z-index: 100;
         border: 1px solid white;
         background-color: #36454f;
       }
 
       .left-media.active {
-        display: flex !important;
+        display: flex;
       }
-      .ima {
-        display: none !important;
+
+      .buttongoi {
+        width: auto;
+        height: auto;
+        padding: 5px;
+        cursor: pointer;
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 16px;
+        text-transform: uppercase;
+        list-style: none;
+        color: white;
       }
+
+      .buttongoi:hover {
+        color: black;
+        background-color: white;
+      }
+
+      .right-sides {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+        min-height: 100vh;
+        overflow-y: auto;
+        padding: 20px;
+        gap: 30px;
+      }
+
+      .first {
+        border: 1px solid white;
+        position: relative;
+        width: 100%;
+      }
+
+      .first-video {
+        width: 100%;
+        display: block;
+      }
+
+      .imp {
+        background-color: #bcf5ff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: fit-content;
+        text-transform: uppercase;
+        z-index: 2;
+      }
+
+      .im {
+        padding: 5px 10px;
+      }
+
+      .icon-arrow {
+        width: 16px;
+      }
+
+      .xs,
+      .m1 {
+        background-color: black;
+        color: #bcf5ff;
+        padding: 5px;
+        border-radius: 25px;
+      }
+
+      .right-side {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .start,
+      .intro {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-left: 1px solid black;
+        padding: 5px;
+      }
+
+      .webuild {
+        position: absolute;
+        top: 15%;
+        left: 5%;
+        color: white;
+        font-family: sans-serif;
+        font-weight: 100;
+        font-size: 50px;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .foundation {
+        position: absolute;
+        bottom: 5%;
+        left: 5%;
+        color: white;
+        font-family: sans-serif;
+        font-weight: 100;
+        font-size: 18px;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .second {
+        color: white;
+        font-family: sans-serif;
+        display: flex;
+        width: 100%;
+        gap: 20px;
+      }
+
+      .three {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 1;
+      }
+
+      .two {
+        display: flex;
+        gap: 20px;
+        font-size: 14px;
+        font-weight: 100;
+      }
+
+      .second-video {
+        width: 40%;
+        display: block;
+      }
+
+      .third {
+        color: white;
+        text-align: center;
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid white;
+        width: 100%;
+      }
+
+      .on,
+      .tw,
+      .th {
+        display: flex;
+      }
+
+      .on,
+      .tw {
+        border-bottom: 1px solid white;
+      }
+
+      .third-first,
+      .third-third,
+      .third-fifth {
+        border-right: 1px solid white;
+      }
+
+      .third-first,
+      .third-second,
+      .third-third,
+      .third-fourth,
+      .third-fifth,
+      .third-sixth {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .third-sixth {
+        text-align: left;
+        justify-content: center;
+      }
+
+      .p {
+        width: 100%;
+        max-width: 500px;
+        display: block;
+      }
+
+      .rightTwo {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+        min-height: 100vh;
+        overflow-y: auto;
+        padding: 20px;
+        gap: 30px;
+      }
+
+      .rightTwo img {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+      }
+
       @media screen and (max-width: 950px) {
         body {
-          display: flex;
           flex-direction: column;
         }
+
         .left {
-          display: none !important;
+          display: none;
         }
-        .right-sides {
-          width: 100% !important;
-        }
+
         .ima {
-          display: flex !important;
+          display: block;
+        }
+
+        .right-sides,
+        .rightTwo {
+          width: 100%;
+        }
+
+        .webuild {
+          font-size: 28px;
+        }
+
+        .second {
+          flex-direction: column;
+        }
+
+        .second-video {
+          width: 100%;
+        }
+
+        .two {
+          flex-direction: column;
+        }
+
+        .p {
+          max-width: 100%;
         }
       }
     </style>
   </head>
   <body>
-    <img
-      style="width: 200px; height: 40px; cursor: pointer"
-      class="ima"
-      src="menub.png"
-      alt=""
-    />
+    <img class="ima" src="menub.png" alt="Menu" />
+
     <div class="left-media">
-      <p class="btn11 buttongoi" style="cursor: pointer">POOLSIDE</p>
-      <p class="btn22 buttongoi" style="cursor: pointer">MODELS</p>
-      <p class="btn33 buttongoi" style="cursor: pointer">PRODUCTS</p>
-      <p class="btn44 buttongoi" style="cursor: pointer">ENTERPRICE</p>
-      <p class="btn55 buttongoi" style="cursor: pointer">GOVERNMENT</p>
-      <p class="btn66 buttongoi" style="cursor: pointer">CAREERS</p>
-      <p class="btn77 buttongoi" style="cursor: pointer">BLOG</p>
+      <p class="btn11 buttongoi">POOLSIDE</p>
+      <p class="btn22 buttongoi">MODELS</p>
+      <p class="btn33 buttongoi">PRODUCTS</p>
+      <p class="btn44 buttongoi">ENTERPRICE</p>
+      <p class="btn55 buttongoi">GOVERNMENT</p>
+      <p class="btn66 buttongoi">CAREERS</p>
+      <p class="btn77 buttongoi">BLOG</p>
     </div>
-    <div
-      style="
-        display: flex;
-        flex-direction: column;
-        width: 20%;
-        height: 100vh;
-        gap: 10px;
-        padding: 20px;
-        color: white;
-        position: sticky;
-        top: 0;
-        border-right: 1px solid white;
-      "
-      class="left"
-    >
-      <p class="btn1 buttongoi" style="cursor: pointer">POOLSIDE</p>
-      <p class="btn2 buttongoi" style="cursor: pointer">MODELS</p>
-      <p class="btn3 buttongoi" style="cursor: pointer">PRODUCTS</p>
-      <p class="btn4 buttongoi" style="cursor: pointer">ENTERPRICE</p>
-      <p class="btn5 buttongoi" style="cursor: pointer">GOVERNMENT</p>
-      <p class="btn6 buttongoi" style="cursor: pointer">CAREERS</p>
-      <p class="btn7 buttongoi" style="cursor: pointer">BLOG</p>
+    <div class="left">
+      <p class="btn1 buttongoi">POOLSIDE</p>
+      <p class="btn2 buttongoi">MODELS</p>
+      <p class="btn3 buttongoi">PRODUCTS</p>
+      <p class="btn4 buttongoi">ENTERPRICE</p>
+      <p class="btn5 buttongoi">GOVERNMENT</p>
+      <p class="btn6 buttongoi">CAREERS</p>
+      <p class="btn7 buttongoi">BLOG</p>
     </div>
+
     <div class="right-sides right">
-      <img style="width: 800px; height: 400px" src="first-image.png" alt="" />
-      <img style="width: 800px; height: 400px" src="second-image.png" alt="" />
-      <img style="width: 800px; height: 400px" src="third-image.png" alt="" />
-      <div
-        style="display: flex; gap: 20px; align-items: center; color: white"
-        class=""
-      >
-        <div style="display: flex; flex-direction: column; gap: 20px" class="">
-          <h3 style="margin: 0%">
-            Outcomes, not tokens. Inside your boundary.
-          </h3>
-          <p>
-            Forward Deployed Research Engineers embed <br />
-            with your teams to design, build, and <br />
-            operate intelligence where your software work <br />
-            actually happens.
-          </p>
+      <div class="first">
+        <video
+          src="videos/proton-desktop.mp4"
+          class="first-video"
+          autoplay
+          loop
+          muted
+          playsinline
+        ></video>
+
+        <div class="imp">
+          <p class="im">!Important</p>
+          <div class="right-side">
+            <div class="start">
+              <img
+                src="images/icons8-right-50.png"
+                class="icon-arrow"
+                alt="→"
+              />
+              <p>Start using poolside</p>
+            </div>
+            <div class="intro">
+              <img
+                src="images/icons8-right-50.png"
+                class="icon-arrow"
+                alt="→"
+              />
+              <p>Introducing laguna</p>
+              <div class="xs">XS.2</div>
+              <div class="m1">M.1</div>
+            </div>
+          </div>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 20px" class="">
-          <h3 style="margin: 0%">Outcome ownership</h3>
-          <p>
-            We don't hand off models. We take joint responsibility <br />
-            for outcomes, adoption and measurable, <br />
-            long-lasting business impact.
-          </p>
-          <h3 style="margin: 0%">Built for complex environments</h3>
-          <p>
-            We work across heterogeneous environments: multi-cloud, <br />
-            legacy systems and air-gapped networks. <br />
-            No rip-and-replace.
-          </p>
+        <h1 class="webuild">
+          We build the models. <br />
+          You build the future.
+        </h1>
+
+        <p class="foundation">
+          Foundation models for long horizon work — starting with software
+          agents.
+        </p>
+      </div>
+      <div class="second">
+        <div class="three">
+          <h1>We build foundation models to transform how work gets done.</h1>
+          <div class="two">
+            <h2>
+              We are a frontier lab focused on building the most capable
+              Foundation Models, agents and enterprise systems to deploy them.
+              Our mission is for artificial general intelligence to drive
+              abundance for humanity.
+            </h2>
+            <h2>
+              This work begins in the highest-consequence
+              environments—enterprises—where Poolside is being battle-tested
+              daily. Helping enterprises become agentic organizations by
+              mobilizing the most important technological development of our
+              lifetimes. Starting with software.
+            </h2>
+          </div>
+        </div>
+        <video
+          class="second-video"
+          src="videos/cube.mp4"
+          autoplay
+          loop
+          muted
+          playsinline
+        ></video>
+      </div>
+      <div class="third">
+        <div class="on">
+          <div class="third-first">
+            <h1>Foundational AI, built and battle-hardened for enterprise.</h1>
+          </div>
+          <div class="third-second">
+            <video
+              class="p"
+              src="videos/agents.mp4"
+              loop
+              autoplay
+              muted
+              playsinline
+            ></video>
+            <h3>Agents and Multi-Agent Orchestration</h3>
+            <p>
+              Single and multi-agent systems that can plan, use tools and
+              execute in sandboxed environments. Governed by policies and
+              end-to-end traces.
+            </p>
+          </div>
+        </div>
+
+        <div class="tw">
+          <div class="third-third">
+            <video
+              class="p"
+              src="videos/web-experiences.mp4"
+              loop
+              autoplay
+              muted
+              playsinline
+            ></video>
+            <h3>Developer Surfaces</h3>
+            <p>
+              Agents, TUI, IDE extensions, binaries and workflows that move with
+              your engineers.
+            </p>
+          </div>
+          <div class="third-fourth">
+            <video
+              class="p"
+              src="videos/api.mp4"
+              loop
+              autoplay
+              muted
+              playsinline
+            ></video>
+            <h3>Data and Knowledge</h3>
+            <p>
+              Connectors to repositories, databases, data warehouses and private
+              corpora within strict boundaries.
+            </p>
+          </div>
+        </div>
+
+        <div class="th">
+          <div class="third-fifth">
+            <video
+              class="p"
+              src="videos/ide.mp4"
+              loop
+              autoplay
+              muted
+              playsinline
+            ></video>
+            <h3>Foundation Models</h3>
+            <p>
+              Poolside Foundation Models deployed in your environment. Measured
+              against evaluations created together with you.
+            </p>
+          </div>
+          <div class="third-sixth">
+            <h2>
+              Delivering intelligence across your development ecosystem — from
+              IDE to terminal, agents to custom applications.
+            </h2>
+          </div>
         </div>
       </div>
     </div>
-    <div class="right-sides rightTwo">
-      <img style="width: 800px; height: 400px" src="first.png" alt="" />
-      <img style="width: 800px; height: 400px" src="second.png" alt="" />
-      <img style="width: 800px; height: 400px" src="third.png" alt="" />
+    <div class="rightTwo">
+      <img src="first.png" alt="First" />
+      <img src="second.png" alt="Second" />
+      <img src="third.png" alt="Third" />
     </div>
+
     <script>
       const btn1 = document.querySelector(".btn1");
       const btn2 = document.querySelector(".btn2");
       const right = document.querySelector(".right");
       const rightTwo = document.querySelector(".rightTwo");
       const ima = document.querySelector(".ima");
-      const left = document.querySelector(".left-media");
+      const leftMedia = document.querySelector(".left-media");
+
       btn1.onclick = () => {
         right.style.display = "flex";
         rightTwo.style.display = "none";
@@ -168,9 +502,21 @@
         right.style.display = "none";
         rightTwo.style.display = "flex";
       };
-      ima.addEventListener("click", function () {
-        left.classList.toggle("active");
+
+      ima.addEventListener("click", () => {
+        leftMedia.classList.toggle("active");
       });
+
+      document.querySelector(".btn11").onclick = () => {
+        right.style.display = "flex";
+        rightTwo.style.display = "none";
+        leftMedia.classList.remove("active");
+      };
+      document.querySelector(".btn22").onclick = () => {
+        right.style.display = "none";
+        rightTwo.style.display = "flex";
+        leftMedia.classList.remove("active");
+      };
     </script>
   </body>
 </html>
