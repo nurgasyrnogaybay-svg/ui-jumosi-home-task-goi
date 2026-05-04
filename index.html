@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        background-color: #36454f;
+      }
+      .left {
+        flex-shrink: 0;
+      }
+      .buttongoi {
+        width: auto;
+        height: auto;
+        padding: 5px;
+      }
+      .buttongoi:hover {
+        color: black;
+        background-color: white;
+      }
+      .right-sides {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+        height: 100%;
+        overflow: scroll;
+        padding: 20px;
+        gap: 30px;
+      }
+      .left-media {
+        display: none;
+        flex-direction: column;
+        width: auto;
+        height: auto;
+        gap: 10px;
+        padding: 20px;
+        color: white;
+        position: absolute;
+        top: 100px;
+        right: 1px;
+        border: 1px solid white;
+        background-color: #36454f;
+      }
+
+      .left-media.active {
+        display: flex !important;
+      }
+      .ima {
+        display: none !important;
+      }
+      @media screen and (max-width: 950px) {
+        body {
+          display: flex;
+          flex-direction: column;
+        }
+        .left {
+          display: none !important;
+        }
+        .right-sides {
+          width: 100% !important;
+        }
+        .ima {
+          display: flex !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      style="width: 200px; height: 40px; cursor: pointer"
+      class="ima"
+      src="menub.png"
+      alt=""
+    />
+    <div class="left-media">
+      <p class="btn11 buttongoi" style="cursor: pointer">POOLSIDE</p>
+      <p class="btn22 buttongoi" style="cursor: pointer">MODELS</p>
+      <p class="btn33 buttongoi" style="cursor: pointer">PRODUCTS</p>
+      <p class="btn44 buttongoi" style="cursor: pointer">ENTERPRICE</p>
+      <p class="btn55 buttongoi" style="cursor: pointer">GOVERNMENT</p>
+      <p class="btn66 buttongoi" style="cursor: pointer">CAREERS</p>
+      <p class="btn77 buttongoi" style="cursor: pointer">BLOG</p>
+    </div>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        height: 100vh;
+        gap: 10px;
+        padding: 20px;
+        color: white;
+        position: sticky;
+        top: 0;
+        border-right: 1px solid white;
+      "
+      class="left"
+    >
+      <p class="btn1 buttongoi" style="cursor: pointer">POOLSIDE</p>
+      <p class="btn2 buttongoi" style="cursor: pointer">MODELS</p>
+      <p class="btn3 buttongoi" style="cursor: pointer">PRODUCTS</p>
+      <p class="btn4 buttongoi" style="cursor: pointer">ENTERPRICE</p>
+      <p class="btn5 buttongoi" style="cursor: pointer">GOVERNMENT</p>
+      <p class="btn6 buttongoi" style="cursor: pointer">CAREERS</p>
+      <p class="btn7 buttongoi" style="cursor: pointer">BLOG</p>
+    </div>
+    <div class="right-sides right">
+      <img style="width: 800px; height: 400px" src="first-image.png" alt="" />
+      <img style="width: 800px; height: 400px" src="second-image.png" alt="" />
+      <img style="width: 800px; height: 400px" src="third-image.png" alt="" />
+      <div
+        style="display: flex; gap: 20px; align-items: center; color: white"
+        class=""
+      >
+        <div style="display: flex; flex-direction: column; gap: 20px" class="">
+          <h3 style="margin: 0%">
+            Outcomes, not tokens. Inside your boundary.
+          </h3>
+          <p>
+            Forward Deployed Research Engineers embed <br />
+            with your teams to design, build, and <br />
+            operate intelligence where your software work <br />
+            actually happens.
+          </p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 20px" class="">
+          <h3 style="margin: 0%">Outcome ownership</h3>
+          <p>
+            We don't hand off models. We take joint responsibility <br />
+            for outcomes, adoption and measurable, <br />
+            long-lasting business impact.
+          </p>
+          <h3 style="margin: 0%">Built for complex environments</h3>
+          <p>
+            We work across heterogeneous environments: multi-cloud, <br />
+            legacy systems and air-gapped networks. <br />
+            No rip-and-replace.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="right-sides rightTwo">
+      <img style="width: 800px; height: 400px" src="first.png" alt="" />
+      <img style="width: 800px; height: 400px" src="second.png" alt="" />
+      <img style="width: 800px; height: 400px" src="third.png" alt="" />
+    </div>
+    <script>
+      const btn1 = document.querySelector(".btn1");
+      const btn2 = document.querySelector(".btn2");
+      const right = document.querySelector(".right");
+      const rightTwo = document.querySelector(".rightTwo");
+      const ima = document.querySelector(".ima");
+      const left = document.querySelector(".left-media");
+      btn1.onclick = () => {
+        right.style.display = "flex";
+        rightTwo.style.display = "none";
+      };
+
+      btn2.onclick = () => {
+        right.style.display = "none";
+        rightTwo.style.display = "flex";
+      };
+      ima.addEventListener("click", function () {
+        left.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>
